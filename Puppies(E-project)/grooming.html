@@ -1,0 +1,1424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grooming</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <style>
+    #h1
+    {
+        text-align: center;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-size: 130%;
+    }
+    #grooming-tab-content .container {
+				max-width: 1095px !important;
+				font-family: "PetcoCircular";
+			}
+			#grooming-tab-content .row {
+				display: flex;
+			}
+			#grooming-tab-content .row.tab-menu {
+				border-bottom: 2px solid #00205B;
+				margin-bottom: 20px;
+				align-items: center;
+			}
+			#grooming-tab-content .category-selector {
+				overflow-y: auto;
+				-ms-overflow-style: none; 
+				scrollbar-width: none;
+				margin: 0.5rem 2%;
+			}
+			#grooming-tab-content .category-selector::-webkit-scrollbar {
+				display: none; 
+			}
+			#grooming-tab-content .tab-menu ul {
+				min-width: 680px;
+				display: flex;
+				transition: all 0.4s;
+				left: 0;
+				position: relative;
+				flex-wrap: nowrap;
+				justify-content: space-around;
+			}
+			#grooming-tab-content ul > li {
+				list-style: none;
+			}
+			#grooming-tab-content .tab-category {
+				flex: 1 1 auto;
+				text-align: center;
+				color: #9B9B9B;
+				max-width: 175px !important;
+			}
+			#grooming-tab-content .tab-category:hover {
+				cursor: pointer;
+				color: #333;
+			}
+			#grooming-tab-content .tab-category.active>.active-indicator {
+				width: 100%;
+				transition: width .15s ease-in;
+				margin: auto;
+			}
+			#grooming-tab-content .active-indicator {
+				height: 6px;
+				width: 0;
+				background: orange;
+			}
+			#grooming-tab-content .tab-category .category-title {
+				text-transform: uppercase;
+				font-family: "PetcoCircular", Arial, sans-serif;
+			}
+			#grooming-tab-content .tab-category.active>.category-title {
+				font-weight: 700;
+				color: #333;
+			}
+			#grooming-tab-content .content-holder .active {
+				display: flex;
+				flex-direction: column;
+			}
+			#grooming-tab-content .tab-content {
+				display: none;
+			}
+			#grooming-tab-content .tab-content .row {
+				display: flex;
+			}
+			#grooming-tab-content .tab-content:nth-child(2) .coupon-holder .text-holder h3 {
+				text-decoration: none;
+			}
+			#grooming-tab-content .banner-holder {
+				background: orange;
+				height: 96px;
+				margin: 0.5rem 2%;
+				width: 96%;
+				justify-content: center;
+			}
+			#grooming-tab-content .banner-holder .img-holder, #grooming-tab-content .banner-holder .text-holder, #grooming-tab-content .banner-holder .link-holder {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			#grooming-tab-content .banner-holder .text-holder p {
+				color: orange;
+				font-weight: bold;
+				text-align: center;
+				line-height: 1.3;
+				font-family: "PetcoCircular", Arial, sans-serif;
+			}
+			#grooming-tab-content .banner-holder .img-holder img {
+				width: 100px;
+			}
+			#grooming-tab-content .banner-holder .link-holder a {
+				color: orange;
+				text-decoration: underline;
+				font-family: "PetcoCircular", Arial, sans-serif;
+			}
+			#grooming-tab-content .coupon-holder {
+				width: 47%;
+				padding: 4px 20px 20px;
+				border-bottom: 1px solid #CCCCCC;
+				display: flex;
+			}
+			#grooming-tab-content .coupon-holder:nth-child(1) {
+				margin-right: 1%;
+			}
+			#grooming-tab-content .coupon-holder:nth-child(2) {
+				margin-left: 1%;
+			}
+			#grooming-tab-content .coupon-holder a {
+				display: flex;
+			}
+			#grooming-tab-content .coupon-holder a:hover {
+				text-decoration: none;
+			}
+			#grooming-tab-content .coupon-holder .text-holder {
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+			}
+			#grooming-tab-content .coupon-holder .text-holder h3 {
+				color: orange;
+				padding-bottom: 10px;
+				text-decoration: underline;
+				line-height: 1.3;
+				font-family: "PetcoCircular", Arial, sans-serif;
+			}
+			#grooming-tab-content .coupon-holder .text-holder p {
+				color: #333;
+				font-weight: normal;
+				line-height: 1.2;
+				margin-bottom: 10px;
+				font-family: "PetcoCircular", Arial, sans-serif;
+			}
+			#grooming-tab-content .coupon-holder .text-holder p:last-of-type {
+				margin-bottom: 0;
+			}
+			#grooming-tab-content .coupon-holder .text-holder p.disclaimer {
+				font-size: 10px;
+			}
+			#grooming-tab-content .coupon-holder .img-holder {
+				width: 75px;
+				height: 75px;
+				margin-right: 15px;
+				display: flex;
+				align-items: center;
+			}
+			#grooming-tab-content .coupon-holder .img-holder img {
+				width: 75px;
+			}
+			#grooming-tab-content .coupon-holder .content-holder .active {
+				display: flex;
+				flex-direction: column;
+			}
+			#grooming-tab-content .tab-content {
+				display: none;
+			}
+			#grooming-tab-content .carousel-control {
+				position: relative;
+				top: 4px;
+				bottom: 0;
+				width: 8%;
+				opacity: .5;
+				font-size: 20px;
+				color: #fff;
+				text-align: center;
+				text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+				text-indent: -9000px;
+				height: 39px;
+				padding: 0.5rem;
+			}
+			#grooming-tab-content .carousel-control:hover, .carousel-control:focus {
+				color: #fff;
+				text-decoration: none;
+				opacity: 0.9
+			}
+			#grooming-tab-content .carousel-control:after {
+				content: "";
+				position: absolute;
+				border-top: 3.5px solid orange;
+				border-right: 3.5px solid orange;
+				opacity: 1;
+				height: 10px;
+				width: 10px;
+				bottom: 50%;
+				top: 33%;
+			}
+			#grooming-tab-content .carousel-control.left {
+				left: 0
+			}
+			#grooming-tab-content .carousel-control.left:after {
+				transform: translate(-50%) rotate(-135deg);
+				left: 60%;
+			}
+			#grooming-tab-content .carousel-control.right {
+				right: 0
+			}
+			#grooming-tab-content .carousel-control.right:after {
+				transform: translate(-50%) rotate(45deg);
+				left: 40%;
+			}
+			#grooming-tab-content .carousel-control.text-light {
+				color: #f8f9fa !important;
+			}
+			@media screen and (min-width: 725px) {
+				#grooming-tab-content .row.tab-menu {
+					border-bottom: none;
+					margin: 20px 0 0 0;
+				}
+				#grooming-tab-content .category-selector {
+					border-bottom: 2px solid #00205B;
+					margin-bottom: 20px;
+				}
+				#grooming-tab-content .carousel-control {
+					display: none !important;
+				}
+			}
+			@media screen and (max-width: 724px) {
+				#grooming-tab-content .carousel-control {
+					display: flex !important;
+				}
+				#grooming-tab-content .category-selector {
+					margin-bottom: 0;
+				}
+			}
+			@media screen and (min-width: 769px) and (max-width: 975px) {
+				#grooming-tab-content .banner-holder .link-holder a {
+					font-size: 13px;
+				}
+			}
+			@media screen and (max-width: 768px) {
+				#grooming-tab-content .tab-content .row {
+					display: flex;
+					flex-direction: column;
+				}
+				#grooming-tab-content .banner-holder {
+					height: 148px;
+				}
+				#grooming-tab-content .banner-holder .text-holder {
+					padding: 0 11%;
+				}
+				#grooming-tab-content .coupon-holder {
+					width: 96%;
+					margin: .5rem 2% !important;
+				}
+			}
+
+			/* tabs 1 and 2 */
+
+			#grooming-tab-content .tab-content .col-4 {
+				display: flex;
+				flex-direction: column;
+				background-color: o;
+				height: 450px;
+				padding: 40px;
+			}
+			#grooming-tab-content .tab-content h3 {
+				padding-bottom: 20px;
+				font-size: 20px;
+				line-height: 1.25em;
+				color: #000;
+			}
+			#grooming-tab-content .tab-content li {
+				display: flex;
+				align-items: center;
+				list-style: none;
+				padding-bottom: 10px;
+			}
+			#grooming-tab-content .tab-content .checkmark-icon {
+				background: url(https://assets.petco.com/petco/image/upload/f_auto,q_auto/services-checkmark.png) center center no-repeat;
+				background-size: contain;
+				min-height: 20px;
+				min-width: 20px;
+				margin: 2px 5px 0 0;
+			}
+			#grooming-tab-content .tab-content li p {
+				padding: 0 0 0 10px;
+				font-size: 16px;
+				color: #000;
+				line-height: 1.38;
+			}
+			#grooming-tab-content .tab-content .col-8 img {
+				object-fit: cover;
+				height: 450px;
+			}
+
+			/* tab 3 */
+
+			#grooming-tab-content .tab-3 .row {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+			#grooming-tab-content .tab-3 .col-12.col-12-sm {
+				width: 100%;
+			}
+			#grooming-tab-content .tab-3 .bnr-img-1 {
+				background-size: cover;
+				height: 180px;
+				width: 100%;
+			}
+			#grooming-tab-content .tab-3 .bnr-img-2 {
+				background-size: cover;
+				height: 180px;
+				width: 100%;
+			}
+			#grooming-tab-content .tab-3 .bnr-img-3 {
+				background-size: cover;
+				height: 180px;
+				width: 100%;
+			}
+			#grooming-tab-content .tab-3 .bnr-img-4 {
+				background-size: cover;
+				height: 180px;
+				width: 100%;
+			}
+			#grooming-tab-content .tab-3 .bnr-img-5 {
+				background-size: cover;
+				height: 180px;
+				width: 100%;
+			}
+			#grooming-tab-content .tab-3 .bnr-img-6 {
+				background-size: cover;
+				height: 180px;
+				width: 100%;
+			}
+			#grooming-tab-content .tab-3 .content-holder .row {
+				flex-direction: row;
+				height: 180px;
+			}
+			#grooming-tab-content .tab-3 .content-holder .col-2 {
+				display: flex;
+				justify-content: center;
+			}
+			#grooming-tab-content .tab-3 .img-holder {
+				max-width: 70px;
+			}
+			#grooming-tab-content .tab-3 .img-holder img {
+				max-height: 90px;
+			}
+
+			/* tab 4 */
+
+			#grooming-tab-content .tab-4 .col-6:nth-child(1) {
+				width: 49%;
+				margin: 0.5rem 1% 0.5rem 0;
+			}
+			#grooming-tab-content .tab-4 .col-6:nth-child(2) {
+				width: 49%;
+				margin: 0.5rem 0 0.5rem 1%;
+			}
+			#grooming-tab-content .tab-content .col-6.col-12-sm {
+				background: #E9FDF2;
+			}
+			#grooming-tab-content .tab-content .col-6.col-12-sm .text-holder {
+				padding: 30px;
+			}
+			#grooming-tab-content .tab-content .col-6.col-12-sm .text-holder h3 {
+				padding-bottom: 10px;
+			}
+			#grooming-tab-content .tab-content .col-6.col-12-sm .text-holder p {
+				line-height: 1.38;
+				font-size: 16px;
+				color: #000;
+			}
+			@media screen and (max-width: 768px) {
+				#grooming-tab-content .scrollbar {
+					width: 98%;
+					margin-right: 0;
+				}
+				#grooming-tab-content .category-row .category-selector {
+					min-width: 850px;
+				}
+				#grooming-tab-content .tab-content.tab-1 .row {
+					display: flex;
+					flex-direction: column-reverse;
+				}
+				#grooming-tab-content .tab-content.tab-2 .row {
+					display: flex;
+					flex-direction: column-reverse;
+				}
+				#grooming-tab-content .tab-content .row .col-8.col-12-sm {
+					height: 100%;
+					width: 100%;
+					margin-bottom: 0;
+				}
+				#grooming-tab-content .tab-content .row .col-4.col-12-sm {
+					height: 100%;
+					width: 100%;
+					margin-top: 0;
+				}
+				#grooming-tab-content .tab-3 .content-holder {
+					background: #F4F6F6;
+				}
+				#grooming-tab-content .tab-4 .row {
+					flex-direction: column;
+				}
+				#grooming-tab-content .tab-4 .col-6.col-12-sm {
+					width: 100%;
+					margin: 0.5rem 0;
+				}
+			}
+            #services-grooming-timeline-content .container {
+			max-width: 1095px !important;
+		}
+		#services-grooming-timeline-content .heading-holder {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			text-align: center;
+			margin-bottom: 40px;
+		}
+		#services-grooming-timeline-content .heading-holder h2 {
+			padding-bottom: 10px;
+		}
+		#services-grooming-timeline-content .row {
+			display: flex;
+		}
+		#services-grooming-timeline-content .col-5.col-12-sm {
+			width: 39.667%;
+			margin-right: 0;
+		}
+		#services-grooming-timeline-content img {
+			object-fit: cover;
+			height: 98%;
+            width: 90%;
+		}
+		#services-grooming-timeline-content .timeline-container {
+			position: relative;
+			overflow: hidden;
+			align-self: center;
+		}
+		#services-grooming-timeline-content .timeline-container::before {
+			content: '';
+			position: absolute;
+			background: orange;
+			left: 20px;
+			width: 2px;
+			height: 100%;
+			margin-left: -1px;
+			z-index: 1;
+		}
+		#services-grooming-timeline-content .timeline-block {
+			display: flex;
+		}
+		#services-grooming-timeline-content .marker {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background: orange;
+			border-radius: 50%;
+			width: 40px;
+			height: 40px;
+			z-index: 2;
+			margin-right: 4%;
+		}
+		#services-grooming-timeline-content .marker h3 {
+			color: #fff;
+		}
+		#services-grooming-timeline-content .timeline-content {
+			height: 140px;
+			width: 92%;
+		}
+		#services-grooming-timeline-content .timeline-content h3 {
+			padding-bottom: 5px;
+		}
+		#services-grooming-timeline-content .timeline-block:last-of-type .timeline-content {
+			height: auto;
+		}
+		#services-grooming-timeline-content .desktop-only .col-12.col-12-sm {
+			display: flex;
+			justify-content: center;
+			padding-top: 20px;
+		}
+		#services-grooming-timeline-content .text-holder {
+			width: 60%;
+			text-align: center;
+		}
+		#services-grooming-timeline-content .text-holder p {
+			font-size: 14px;
+			line-height: 1.25;
+		}
+		@media screen and (max-width: 768px) {
+			#services-grooming-timeline-content .row {
+				display: flex;
+				flex-direction: column;
+			}
+			#services-grooming-timeline-content .col-5.col-12-sm {
+				display: flex;
+				height: 390px;
+				width: 96%;
+				margin: 0.5rem 2% 20px 2%;
+			}
+			#services-grooming-timeline-content img {
+				object-fit: contain;
+			}
+			#services-grooming-timeline-content .timeline-content {
+				height: auto;
+				width: 92%;
+			}
+			#services-grooming-timeline-content .timeline-block {
+				padding-bottom: 20px;
+			}
+			#services-grooming-timeline-content .timeline-block:last-of-type {
+				padding-bottom: 0;
+			}
+		}
+        .section_footer{
+        width: 100%;
+        float: left;
+        background-color: #272222;
+        height: auto;
+        padding-top: 30px;
+        padding-bottom: 30px; 
+      
+      }
+      
+      .mail_section{
+        width: 100%;
+        float: left;
+      }
+      
+      .mail_section ul{
+        margin: 0px;
+        padding: 0px;
+      }
+      
+      .mail_section li{
+        float: left;
+        font-size: 12pt;
+        color: #fdfefe;
+        padding-top: 10px;
+        padding-right: 35px;
+      }
+      .map_text{
+        padding-left: 30px;
+      
+      }
+      
+      
+      
+      .shop_text {
+          width: 100%;
+          float: left;
+          font-size: 28px;
+          color: #ebebeb;
+          font-weight: bold;
+          padding: 25px 0px;
+      }
+      
+      .dummy_text {
+          width: 100%;
+          float: left;
+          font-size: 12pt;
+          color: #ebebeb;
+          margin-left: 0px;
+          margin-top: 0px;
+          line-height: 30px;
+      }
+      
+      .pet_text {
+          font-size: 12pt;
+          color: #ebebeb;
+          padding-left: 16px;
+      }
+      
+      .image-icon {
+          width: 100%;
+          float: left;
+          padding-top: 6px;
+      }
+      
+      .footer-img {
+          width: 100%;
+          float: left;
+          margin-top: 15px;
+      }
+      
+      .adderess_text{
+          width: 100%;
+          float: left;
+          font-size: 28px;
+          color: #ebebeb;
+          font-weight: bold;
+          padding: 25px 0px;
+      }
+      .footer-img{
+        width: 100% !important;
+        float: left;
+        margin-top: 10px;
+        padding-bottom: 15px;
+      }
+      
+      .social-icon{
+        width: 100%;
+        float: left;
+        border-bottom: 3px solid#fff;
+      }
+      
+      .icons {
+          width: 30%;
+          margin: 0 auto;
+          text-align: center;
+          padding-bottom: 70px;
+      }
+      .icons li{ float: left; padding-left: 40px; }
+      
+      .copyright{ 
+        width: 100%;
+        float: left;
+        font-size: 12pt;
+        color: #b1b0b0;
+        text-align: center;
+        padding-top: 25px;
+        font-family: Poppins; 
+      }
+      
+      .copyright a{
+        color: #b1b0b0;
+      }
+      
+      .copyright a:hover{
+        color: #ffffff;
+      }
+      .overlay {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0, 0.9);
+        overflow-x: hidden;
+        transition: 0.5s;
+      }
+      
+      
+      
+      
+      
+      .header-main{
+        width: 100%;
+        float: left;
+        background-color: #1d1b1c;
+        height: auto;
+        padding-top: 20px;
+        padding-bottom: 20px;
+      }
+
+      </style>
+       <!-- Start WOWSlider.com HEAD section -->
+<link rel="stylesheet" type="text/css" href="engine1/style.css" />
+<script type="text/javascript" src="engine1/jquery.js"></script>
+<!-- End WOWSlider.com HEAD section -->
+  
+</head>
+<body>
+    <!-- navbar start -->
+<nav style="text-transform: uppercase;color: #272222; font-weight: bold;" class="navbar navbar-expand-sm navbar-light bg-dark fixed-top">
+    <a  href="home.html"><img style="border-radius: 80px; height: 85px;" class="topheading" src="images/logo.jpg"></a>
+    <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+  aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavId">
+  <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+  <li class="nav-item active">
+  <a style="color: white; font-weight: bold;" class="nav-link" href="home.html">Home<span class="sr-only">(current)</span></a>
+  </li>
+  <li class="nav-item dropdown">
+  <a style="color: white; font-weight: bold;" class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Puppies</a>
+  <div class="dropdown-menu" aria-labelledby="dropdownId">
+  
+  <a  style="text-transform:uppercase ;"class="dropdown-item text-white bg-dark" href="beagle.html">Beagle</a>
+  <a style="text-transform:uppercase ;" class="dropdown-item text-white bg-dark" href="browngermanshepherd.html">Brown German Shepherd</a>
+  <a  style="text-transform:uppercase ;"class="dropdown-item text-white bg-dark" href="bullydog.html">Bully Dog</a>
+  <a  style="text-transform:uppercase ;"class="dropdown-item text-white bg-dark" href="Charliedog.html">Charlie Dog</a>
+  <a  style="text-transform:uppercase ;"class="dropdown-item text-white bg-dark" href="Laboradorretriever.html">Laborader retriever</a>
+  <a  style="text-transform:uppercase ;"class="dropdown-item text-white bg-dark" href="oscardog.html">Oscar Dog</a>
+  <a  style="text-transform:uppercase ;"class="dropdown-item text-white bg-dark" href="pandashepherd.html">Panda Shepherd</a>
+  <a  style="text-transform:uppercase ;"class="dropdown-item text-white bg-dark" href="oscardog.html">Puppy Lapidor</a>
+  
+  </div>
+  </li>
+  <li class="nav-item">
+  <a class="nav-link" href="#"></a>
+  </li>
+  <li class="nav-item dropdown">
+  <a style="color: white; font-weight: bold;" class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Nutrition</a>
+  <div class="dropdown-menu" aria-labelledby="dropdownId">
+  <a class="dropdown-item text-white bg-dark" href="nutrition1.html">Pedigree</a>
+  <a class="dropdown-item text-white bg-dark" href="nutrition2.html">Eukanuba</a>
+  <a class="dropdown-item text-white bg-dark" href="nutrition3.html">Royal Canin</a>
+  <a class="dropdown-item text-white bg-dark" href="nutrition4.html">Gorilla Max</a>
+  <a class="dropdown-item text-white bg-dark" href="nutrition5.html">IAMS Minichunks</a>
+  <a class="dropdown-item text-white bg-dark" href="nutrition6.html">Mini Chunk</a>
+  <a class="dropdown-item text-white bg-dark" href="nutrition7.html">Super Coat</a>
+  <a class="dropdown-item text-white bg-dark" href="nutrition8.html">Cesar</a>
+  
+  
+  </div>
+  </li>
+  <li class="nav-item active">
+  <a style="color: white; font-weight: bold;" class="nav-link" href="FAQ'S.html">FAQ'S<span class="sr-only">(current)</span></a>
+  </li>
+  <li class="nav-item active">
+  <a style="color: white; font-weight: bold;" class="nav-link" href="gallery.html">Gallery<span class="sr-only">(current)</span></a>
+  </li>
+  <li class="nav-item active">
+  <a style="color: white; font-weight: bold;" class="nav-link" href="contactus.html">Contact<span class="sr-only">(current)</span></a>
+  </li>
+  <li class="nav-item active">
+  <a style="color: white; font-weight: bold;" class="nav-link" href="about us.html">team<span class="sr-only">(current)</span></a>
+  </li>
+  <li class="nav-item active">
+    <a style="color: white; font-weight: bold;" class="nav-link" href="sitemap.html">Sitemap<span class="sr-only">(current)</span></a>
+    </li> <li class="nav-item active">
+        <a style="color: white; font-weight: bold;" class="nav-link" href="grooming.html">Grooming<span class="sr-only">(current)</span></a>
+        </li>       
+  </ul>
+  </div>
+  </nav>
+  <!-- navbar end -->
+  <!-- Start WOWSlider.com BODY section -->
+  <br><br><br><br>
+<div id="wowslider-container1">
+    <div class="ws_images"><ul>
+            <li><img style="height: 550px; width: 100%;" src="data1/images/slider1.jpg" alt="slider1" title="slider1" id="wows1_0"/></li>
+            <li><img style="height: 550px; width: 100%;"src="data1/images/slider2.jpg" alt="slider2" title="slider2" id="wows1_1"/></li>
+            <li><img style="height: 550px; width: 100%;"src="data1/images/slider4.jpg" alt="slider4" title="slider4" id="wows1_2"/></li>
+            <li><a href="http://wowslider.net"><img style="height: 550px; width: 100%;" src="data1/images/slider5.jpg" alt="bootstrap image slider" title="slider5" id="wows1_3"/></a></li>
+            <li><img style="height: 550px; width: 100%;" src="data1/images/sllider3.jpg" alt="sllider3" title="sllider3" id="wows1_4"/></li>
+        </ul></div>
+        <div class="ws_bullets"><div>
+            <a href="#" title="slider1"><span><img src="data1/tooltips/slider1.jpg" alt="slider1"/>1</span></a>
+            <a href="#" title="slider2"><span><img src="data1/tooltips/slider2.jpg" alt="slider2"/>2</span></a>
+            <a href="#" title="slider4"><span><img src="data1/tooltips/slider4.jpg" alt="slider4"/>3</span></a>
+            <a href="#" title="slider5"><span><img src="data1/tooltips/slider5.jpg" alt="slider5"/>4</span></a>
+            <a href="#" title="sllider3"><span><img src="data1/tooltips/sllider3.jpg" alt="sllider3"/>5</span></a>
+        </div></div><div class="ws_script" style="position:absolute;left:-99%"><a href="http://wowslider.net">bootstrap carousel</a> by WOWSlider.com v9.0</div>
+    <div class="ws_shadow"></div>
+    </div>	
+    <script type="text/javascript" src="engine1/wowslider.js"></script>
+    <script type="text/javascript" src="engine1/script.js"></script>
+    <!-- End WOWSlider.com BODY section -->
+    <br><br>
+    <section class="spacing-top-md spacing-bottom-md">
+        <div id="services-grooming-tiles">
+        <div class="container">
+        <div class="row">
+        <div class="col-12 col-12-sm heading-holder">
+            <p style="font-size: 40px; font-weight: bolder;" id="h1">The grooming destination that puts your pet's health first</p>
+            <p id="p1" style="padding-left: 27%; font-family: initial;">Customize your dog's grooming with solutions to help keep themfeeling great.</p>
+      
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-3 col-12-sm content-holder">
+        <div class="img-holder">
+        <img src="images/img1.jpg" height="192" width="192" alt="image not found" class="center-block img-responsive" />
+        </div>
+        <div class="text-holder">
+        <h3>Breed-specific Haircuts</h3>
+        <p>
+        Regular grooming is essential to your pet's health as it helps
+        prevent skin issues such as matting.
+        </p>
+        </div>
+        </div>
+        <div class="col-3 col-12-sm content-holder">
+        <div class="img-holder">
+            <img src="images/img2.jpg" height="192" width="192" alt="image not found" class="center-block img-responsive" /></div>
+        <div class="text-holder">
+        <h3>Baths for Every Breed</h3>
+        <p>
+        We'll suds away dirt, oil and debris to help skin & coats of all
+        types look and feel great.
+        </p>
+        </div>
+        </div>
+        <div class="col-3 col-12-sm content-holder">
+        <div class="img-holder">
+            <img src="images/img3.jpg" height="192" width="192" alt="image not found" class="center-block img-responsive" /></div>
+        <div class="text-holder">
+        <h3>Customized Packages</h3>
+        <p>
+        Upgrade their visit with packages designed to target specific
+        needs such as de-shedding, dry and sensitive skin care and more.
+        </p>
+        </div>
+        </div>
+        <div class="col-3 col-12-sm content-holder">
+        <div class="img-holder">
+            <img src="images/img4.jpg" height="192" width="192" alt="image not found" class="center-block img-responsive"/></div>
+        <div class="text-holder">
+        <h3>Walk-In Services</h3>
+        <p>
+        Help care for your pet with essential services such as nail
+        trimming, teeth-brushing.
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </section>
+        <div class="hidden_title_aem" id="grooming-solution-tiles" style="display:none">Grooming Solution Tiles</div>
+        </div>
+        
+        </div>
+        </div>
+        </span>
+        <span>
+            <section class="spacing-top-md spacing-bottom-md bg-white">
+                <div id="grooming-tab-content">
+                <div class="container">
+                <div class="row tab-menu">
+                <a href="#" class="carousel-control left toggleLeft">next</a>
+                <div class="col-12 col-12-sm category-selector" id="outer">
+                <ul id="bar">
+                <li class="tab-category active" onclick="shopByCategory.selectCategory(0);clickTrackLink(this);">
+                <div class="category-title">Breed-Specific <br> Haircuts</div>
+                <div class="active-indicator"></div>
+                </li>
+                <li class="tab-category" onclick="shopByCategory.selectCategory(1);clickTrackLink(this);">
+                <div class="category-title">Baths for every <br> breed</div>
+                <div class="active-indicator"></div>
+                </li>
+               
+                </ul>
+                </div>
+                <a href="#" class="carousel-control right toggleRight">previous</a>
+                </div>
+                <div class="row">
+                <div class="col-12 col-12-sm">
+                <div class="container no-margin content-holder">
+                
+                <div class="tab-content tab-1 active">
+                <div class="row">
+                <div class="col-4 col-12-sm">
+                <div class="text-holder">
+                <h3>What's Included:</h3>
+                <ul>
+                <li>
+                <div class="checkmark-icon">&nbsp;</div>
+                <p>Cut and style</p>
+                </li>
+                <li>
+                <div class="checkmark-icon">&nbsp;</div>
+                <p>Deep-cleaning shampoo</p>
+                </li>
+                <li>
+                <div class="checkmark-icon">&nbsp;</div>
+                <p>Blow-dry</p>
+                </li>
+                <li>
+                <div class="checkmark-icon">&nbsp;</div>
+                <p>15-min brushout</p>
+                </li>
+                <li>
+                <div class="checkmark-icon">&nbsp;</div>
+                <p>Scented spritz</p>
+                </li>
+                <li>
+                <div class="checkmark-icon">&nbsp;</div>
+                <p>Gland expression</p>
+                </li>
+                <li>
+                <div class="checkmark-icon">&nbsp;</div>
+                <p>Nail trim</p>
+                </li>
+                </ul>
+                </div>
+                </div>
+                <div class="col-8 col-12-sm">
+                <img src="images/down1.jpg" alt="image not found">
+                </div>
+                </div>
+                </div>
+                
+                <div class="tab-content tab-2">
+                <div class="row">
+                <div class="col-4 col-12-sm">
+                <div class="text-holder">
+                <h3>What's Included:</h3>
+                <ul>
+                <li>
+                <div class="checkmark-icon">&nbsp;</div>
+                <p>Deep-cleaning shampoo</p>
+                </li>
+                <li>
+                <div class="checkmark-icon">&nbsp;</div>
+                <p>Blow-dry</p>
+                </li>
+                <li>
+                <div class="checkmark-icon">&nbsp;</div>
+                <p>15-min brushout</p>
+                </li>
+                <li>
+                <div class="checkmark-icon">&nbsp;</div>
+                <p>Scented spritz</p>
+                </li>
+                <li>
+                <div class="checkmark-icon">&nbsp;</div>
+                <p>Gland expression</p>
+                </li>
+                <li>
+                <div class="checkmark-icon">&nbsp;</div>
+                <p>Nail trim</p>
+                </li>
+                </ul>
+                </div>
+                </div>
+                <div class="col-8 col-12-sm">
+                <img src="images/down2.jpg"  alt="image not found" class="center-block img-responsive">
+                </div>
+                </div>
+                </div>
+                
+                <div class="tab-content tab-3">
+                <div class="row">
+                <div class="col-12 col-12-sm">
+                <div class="content-holder bnr-img-1">
+                <div class="row">
+                <div class="col-2 col-4-sm">
+                <div class="img-holder">
+                </div>
+                </div>
+                <div class="col-10 col-8-sm">
+                <h3>Essentials Plus</h3>
+                <p>Solution to take care of their routine needs </p>
+                </div>
+                </div>
+                </div>
+                </div>
+                <div class="col-12 col-12-sm">
+                <div class="content-holder bnr-img-2">
+                <div class="row">
+                <div class="col-2 col-4-sm">
+                <div class="img-holder">
+                <img src="images/down3.jpg"  alt="image not found" class="center-block img-responsive">
+                </div>
+                </div>
+                <div class="col-10 col-8-sm">
+                <h3>Flea Cleanse</h3>
+                <p>Solution to fight back against fleas </p>
+                </div>
+                </div>
+                </div>
+                </div>
+                <div class="col-12 col-12-sm">
+                <div class="content-holder bnr-img-3">
+                <div class="row">
+                <div class="col-2 col-4-sm">
+                <div class="img-holder">
+                </div>
+                </div>
+                <div class="col-10 col-8-sm">
+                <h3>Shed Release</h3>
+                <p>Solution to reduce and remove loose fur </p>
+                </div>
+                </div>
+                </div>
+                </div>
+                <div class="col-12 col-12-sm">
+                <div class="content-holder bnr-img-4">
+                <div class="row">
+                <div class="col-2 col-4-sm">
+                <div class="img-holder">
+                </div>
+                </div>
+                <div class="col-10 col-8-sm">
+                <h3>Shed Release Plus</h3>
+                <p>Solution to minimize shedding, PLUS teeth-brushing and nail care</p>
+                </div>
+                </div>
+                </div>
+                </div>
+                <div class="col-12 col-12-sm">
+                <div class="content-holder bnr-img-5">
+                <div class="row">
+                <div class="col-2 col-4-sm">
+                <div class="img-holder">
+                </div>
+                </div>
+                <div class="col-10 col-8-sm">
+                <h3>Calm & Refresh</h3>
+                <p>Solution to help them unwind and relax </p>
+                </div>
+                </div>
+                </div>
+                </div>
+                <div class="col-12 col-12-sm">
+                <div class="content-holder bnr-img-6">
+                <div class="row">
+                <div class="col-2 col-4-sm">
+                <div class="img-holder">
+                </div>
+                </div>
+                <div class="col-10 col-8-sm">
+                <h3>Soothe & Repair</h3>
+                <p>Veterinarian-developed solution for dry, itchy skin </p>
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+                
+                <div class="tab-content tab-4">
+                <div class="row">
+                <div class="col-6 col-12-sm">
+                <div class="text-holder">
+                <h3>Mini Make Rover $22 ($40 value)</h3>
+                <p>Includes nail trim and buffing, ear cleaning, paw balm and scented spritz</p>
+                </div>
+                </div>
+                <div class="col-6 col-12-sm">
+                <div class="text-holder">
+                <h3>Mini Make Rover Plus $25 ($50 value)</h3>
+                <p>Includes nail trim and buffing, ear cleaning, paw balm and scented spritz, plus teeth-brushing or breath refresh </p>
+                </div>
+                </div>
+                </div>
+                <div class="row">
+                <div class="col-6 col-12-sm">
+                <div class="text-holder">
+                <h3>Nail trim and buffing</h3>
+                <p>$20</p>
+                </div>
+                </div>
+                <div class="col-6 col-12-sm">
+                <div class="text-holder">
+                <h3>Nail trim</h3>
+                <p>$12</p>
+                <div class="row">
+                    <div class="col-6 col-12-sm">
+                    <div class="text-holder">
+                    <h3>Teeth-brushing</h3>
+                    <p>$12</p>
+                    </div>
+                    </div>
+                    <div class="col-6 col-12-sm">
+                    <div class="text-holder">
+                    <h3>Breath refresh</h3>
+                    <p>$12</p>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-6 col-12-sm">
+                    <div class="text-holder">
+                    <h3>Face, feet and fanny trim</h3>
+                    <p>$15</p>
+                    </div>
+                    </div>
+                    <div class="col-6 col-12-sm">
+                    <div class="text-holder">
+                    <h3>Ear cleaning</h3>
+                    <p>$12</p>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    </section>
+                    <script>
+                    
+                                var metrics = {};
+                                var scrollOffset = 0;
+                    
+                                var container = document.getElementById("outer");
+                                var bar = document.getElementById("bar");
+                    
+                                function setMetrics() {
+                                    metrics = {
+                                        bar: bar.scrollWidth||0,
+                                        container: container.clientWidth||0,
+                                        left: parseInt(bar.offsetLeft),
+                                        getHidden() {
+                                            return (this.bar+this.left)-this.container
+                                        }
+                                    }
+                    
+                                    updateArrows();
+                                }
+                    
+                                function doSlide(direction){
+                                    setMetrics();
+                                    var pos = metrics.left;
+                                    if (direction==="right") {
+                                        amountToScroll = -(Math.abs(pos) + Math.min(metrics.getHidden(), metrics.container));
+                                    }
+                                    else {
+                                        amountToScroll = Math.min(0, (metrics.container + pos));
+                                    }
+                                    bar.style.left = amountToScroll + "px";
+                                    setTimeout(function(){
+                                        setMetrics();
+                                    },400)
+                                }
+                    
+                                function updateArrows() {
+                                    if (metrics.getHidden() === 0) {
+                                        document.getElementsByClassName("toggleRight")[0].classList.add("text-light");
+                                    }
+                                    else {
+                                        document.getElementsByClassName("toggleRight")[0].classList.remove("text-light");
+                                    }
+                    
+                                    if (metrics.left === 0) {
+                                        document.getElementsByClassName("toggleLeft")[0].classList.add("text-light");
+                                    }
+                                    else {
+                                        document.getElementsByClassName("toggleLeft")[0].classList.remove("text-light");
+                                    }
+                                }
+                    
+                                function adjust(){
+                                    bar.style.left = 0;
+                                    setMetrics();
+                                }
+                    
+                                document.getElementsByClassName("toggleRight")[0].addEventListener("click", function(e){
+                                    e.preventDefault()
+                                    doSlide("right")
+                                });
+                    
+                                document.getElementsByClassName("toggleLeft")[0].addEventListener("click", function(e){
+                                    e.preventDefault()
+                                    doSlide("left")
+                                });
+                    
+                                window.addEventListener("resize",function(){
+                                // reset to left pos 0 on window resize
+                                adjust();
+                            });
+                    
+                                setMetrics();
+                    
+                            </script>
+                    <script>
+                    
+                                var shopByCategory = (function () {
+                                    var categoryElements = document.getElementsByClassName('tab-category');
+                                    var contentElements = document.getElementsByClassName('tab-content');
+                                    var currentCategory = 0;
+                    
+                                    function selectCategory(idx) {
+                                        categoryElements[currentCategory].classList.remove('active');
+                                        categoryElements[idx].classList.add('active');
+                                        contentElements[currentCategory].classList.remove('active');
+                                        contentElements[idx].classList.add('active');
+                                        currentCategory = idx;
+                                    }
+                    
+                                    return {
+                                        selectCategory: selectCategory
+                                    };
+                                })();
+                    
+                            </script>
+                    
+                    <style> h1, h2, h3, h4, h5, h6, p, a, button, li, div {
+                                font-family: "PetcoCircular", Arial, sans-serif !important;
+                            }
+                        </style>
+                    <style>
+                    
+                            #category-dog-shop .container {
+                                max-width: 1095px !important;
+                            }
+                            #category-dog-shop .row {
+                                display: flex;
+                            }
+                            #category-dog-shop .heading-holder {
+                                display: flex;
+                                flex-direction: row;
+                                justify-content: center;
+                                text-align: center;
+                                margin-bottom: 40px;
+                            }
+                            #category-dog-shop .heading-holder h2 {
+                                font-family: "PetcoCircularTT-Bold", arial !important;
+                                font-size: 25px;
+                                line-height: 1.28em;
+                                letter-spacing: 0.25px;
+                                color: 000;
+                            }
+                            #category-dog-shop .row:nth-child(2) {
+                                display: flex;
+                                flex-wrap: wrap;
+                            }
+                            #category-dog-shop .content-holder {
+                                display: flex;           
+                                flex-direction: row;
+                                justify-content: center;
+                                flex: calc(16.6666% - 25px);
+                                margin: 10px 10px 40px 10px;
+                            }
+                            #category-dog-shop .content-holder a {
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                            }
+                            #category-dog-shop .img-holder {
+                                overflow: hidden;
+                                border-radius: 50%;
+                                border: 1px solid #CCC;
+                            }
+                            #category-dog-shop .img-holder img {
+                                max-height: 160px;
+                                max-width: 160px;
+                            }
+                            #category-dog-shop .text-holder {
+                                display: flex;
+                                justify-content: center;
+                                text-align: center;
+                                margin-top: 20px;
+                            }
+                            #category-dog-shop .text-holder h4 {
+                                font-family: "PetcoCircularTT-Bold", Arial !important;
+                                font-size: 16px;
+                                line-height: 1.2em;
+                                letter-spacing: 0.2px;
+                            }
+                            #category-dog-shop .text-holder p {
+                                font-family: "PetcoCircular", Arial, sans-serif;
+                                font-size: 16px;
+                                line-height: 1.2em;
+                                letter-spacing: 0.2px;
+                            }
+                            #category-dog-shop a {
+                                text-decoration: none;
+                            }
+                            @media screen and (min-width: 769px) and (max-width: 975px) {
+                                #category-dog-shop .content-holder {
+                                    flex: calc(25% - 25px);
+                                }
+                            }
+                            @media screen and (max-width: 768px) {
+                                #category-dog-shop .content-holder {
+                                    flex: calc(50% - 25px);
+                                    margin-bottom: 40px;
+                                }
+                                #category-dog-shop .img-holder img {
+                                    min-height: 142px;
+                                    min-width: 142px;
+                                }
+                            }
+                    
+                        </style>
+                    
+                </div>
+                </div>
+                </div>
+                <br>
+                <br>
+                <br>
+
+                <section class="spacing-top-md spacing-bottom-md">
+                    <div id="services-grooming-timeline-content">
+                    <div class="container">
+                    <div class="row">
+                    <div class="col-12 col-12-sm heading-holder">
+                    <h2>We're with your pet every step of the way</h2>
+                    <p>From start to finish, we make your pet's health & wellness our top priorities.</p>
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-5 col-12-sm">
+                    <img src="images/down3.jpg" alt="image not found" class="center-block img-responsive">
+                    </div>
+                    <div class="col-7 col-12-sm">
+                    <div class="timeline-container">
+                    <div class="timeline-block">
+                    <div class="marker"><h3>1</h3></div>
+                    <div class="timeline-content">
+                    <h3>Check-In</h3>
+                    <p>Your service starts with our 7-point Pet Care Check*, a quick screening where we make sure nothing looks or feels abnormal.</p>
+                    </div>
+                    </div>
+                    <div class="timeline-block">
+                    <div class="marker"><h3>2</h3></div>
+                    <div class="timeline-content">
+                    <h3>Initial Brush & Clip</h3>
+                    <p>Each dog's service is personalized to their needs, which may include a thorough brushout or initial shave for dogs with thick coats.</p>
+                    </div>
+                    </div>
+                    <div class="timeline-block">
+                    <div class="marker"><h3>3</h3></div>
+                    <div class="timeline-content">
+                    <h3>Bath</h3>
+                    <p>Scrub-a-dub! We gently massage shampoo into your dog's coat to remove dirt, oil and debris, leaving them silky-smooth and squeaky-clean.</p>
+                    </div>
+                    </div>
+                    <div class="timeline-block">
+                    <div class="marker"><h3>4</h3></div>
+                    <div class="timeline-content">
+                    <h3>Dry</h3>
+                    <p>Drying dogs isn't one-size-fits-all. We use a variety of methods from air- and towel-drying to non-heated hand-held dryers to ensure dogs' safety and comfort.</p>
+                    </div>
+                    </div>
+                    <div class="timeline-block">
+                    <div class="marker"><h3>5</h3></div>
+                    <div class="timeline-content">
+                    <h3>Full Haircut</h3>
+                    <p>Here's where the real transformation happens. Our stylists work their magic to create cuts that meet breed standards or your personal style preference—100% satisfaction guaranteed!</p>
+                    </div>
+                    </div>
+                    <div class="timeline-block">
+                    <div class="marker"><h3>6</h3></div>
+                    <div class="timeline-content">
+                    <h3>Report Card</h3>
+                    <p>We'll send your pet home with a full report detailing services provided and after-care recommendations for keeping them healthy until we see them at your next grooming appointment.</p>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="row desktop-only">
+                    <div class="col-12 col-12-sm">
+                    <div class="text-holder">
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    </section>
+                <!-- section footer start -->
+<div class="offset-md-4">
+    <img class="img-responsive" src="images/aboutdog.png"style=" margin-bottom: -53px; " data-aos="fade-up">
+    </div>
+    <div class="section_footer">
+    <div class="container">
+    <div class="mail_section">
+    
+    <div class="footer-logo"><img <a  href="home.html"><img style="border-radius: 80px; height: 130px;" class="topheading" src="images/logo.jpg">
+    <img style="padding: 40px;" src="images/map-icon.png"><span style="color: white;" class="map_text">Gb road 123 london Uk</span>
+    <img style="padding: 40px;"  src="images/call-icon.png"><span style="color: white;" class="map_text">(+71) 9876543210</span>
+    
+    </div> 
+    <div class="footer_section_2">
+    <div class="row">
+    <div class="col-sm-6 col-md-6 col-lg-3">
+    <h2 class="shop_text">About Puppies</h2>
+    <p class="dummy_text">A puppy is a juvenile dog. Some puppies can weigh 1–1.5 kg (2.2–3.3 lb), while larger ones can weigh up to 7–11 kg (15–24 lb).</p>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-3">
+    <h2 class="shop_text">Useful Links</h2>
+    <a href="home.html"><div class="image-icon"><img src="images/bulit-icon.png"><span class="pet_text">Home</span></div></a>
+    <a href="gallery.html"><div class="image-icon"><img src="images/bulit-icon.png"><span class="pet_text">Gallery</span></div></a>
+    <a href="contactus.html"><div class="image-icon"><img src="images/bulit-icon.png"><span class="pet_text">Contact us</span></div></a>
+    <a href="about us.html"><div class="image-icon"><img src="images/bulit-icon.png"><span class="pet_text">About us</span></div></a>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-3">
+    <h2 class="shop_text">Overview</h2>
+    <a href="FAQ'S.html"><div class="image-icon"><img src="images/bulit-icon.png"><span class="pet_text">Faq's</span></div></a>
+    <a href="nutrition1.html"><div class="image-icon"><img src="images/bulit-icon.png"><span class="pet_text">Nutrition</span></div></a>
+    <a href="beagle.html"><div class="image-icon"><img src="images/bulit-icon.png"><span class="pet_text">Puppies</span></div></a>
+        </div>
+    <div class="col-sm-6 col-md-6 col-lg-3">
+    <h2 class="adderess_text">Instagram</h2>
+    <div class="footer-img">
+    <div class="row">
+    <div class="col-sm-6">
+    <div class="footer-img"><img src="images/footer-img1.png" style="width: 100%;"></div>
+    <div class="footer-img"><img src="images/footer-img2.png" style="width: 100%;"></div>
+    </div>
+    <div class="col-sm-6">
+    <div class="footer-img"><img src="images/footer-img3.png" style="width: 100%;"></div>
+    <div class="footer-img"><img src="images/footer-img4.png" style="width: 100%;"></div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="social-icon">
+    <div class="row">
+    <div class="col-sm-12">
+    <div class="icons">
+    
+    <a href="https://www.facebook.com/"><img style=" height: 30px;border-radius: 50px;" src="images/fb-icon.png "></a>
+    <a href="https://www.instagram.com/puppies.website/"><img style="background-color: white; height: 30px;border-radius: 50px;" src="images/icons8-instagram-24 (1).png"></a>
+    
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <!-- section footer end -->         
+        
+</body>
+</html>

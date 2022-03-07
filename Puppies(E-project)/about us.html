@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Puppies|About Us</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.section_footer{
+width: 100%;
+float: left;
+background-color: #272222;
+height: auto;
+padding-top: 30px;
+padding-bottom: 30px; 
+
+}
+
+.mail_section{
+width: 100%;
+float: left;
+}
+
+.mail_section ul{
+margin: 0px;
+padding: 0px;
+}
+
+.mail_section li{
+float: left;
+font-size: 12pt;
+color: #fdfefe;
+padding-top: 10px;
+padding-right: 35px;
+}
+.map_text{
+padding-left: 30px;
+
+}
+
+
+
+.shop_text {
+width: 100%;
+float: left;
+font-size: 28px;
+color: #ebebeb;
+font-weight: bold;
+padding: 25px 0px;
+}
+
+.dummy_text {
+width: 100%;
+float: left;
+font-size: 12pt;
+color: #ebebeb;
+margin-left: 0px;
+margin-top: 0px;
+line-height: 30px;
+}
+
+.pet_text {
+font-size: 12pt;
+color: #ebebeb;
+padding-left: 16px;
+}
+
+.image-icon {
+width: 100%;
+float: left;
+padding-top: 6px;
+}
+
+.footer-img {
+width: 100%;
+float: left;
+margin-top: 15px;
+}
+
+.adderess_text{
+width: 100%;
+float: left;
+font-size: 28px;
+color: #ebebeb;
+font-weight: bold;
+padding: 25px 0px;
+}
+.footer-img{
+width: 100% !important;
+float: left;
+margin-top: 10px;
+padding-bottom: 15px;
+}
+
+.social-icon{
+width: 100%;
+float: left;
+border-bottom: 3px solid#fff;
+}
+
+.icons {
+width: 30%;
+margin: 0 auto;
+text-align: center;
+padding-bottom: 70px;
+}
+.icons li{ float: left; padding-left: 40px; }
+
+.copyright{ 
+width: 100%;
+float: left;
+font-size: 12pt;
+color: #b1b0b0;
+text-align: center;
+padding-top: 25px;
+font-family: Poppins; 
+}
+
+.copyright a{
+color: #b1b0b0;
+}
+
+.copyright a:hover{
+color: #ffffff;
+}
+.overlay {
+height: 100%;
+width: 0;
+position: fixed;
+z-index: 1;
+top: 0;
+left: 0;
+background-color: rgb(0,0,0);
+background-color: rgba(0,0,0, 0.9);
+overflow-x: hidden;
+transition: 0.5s;
+}
+.header-main{
+width: 100%;
+float: left;
+background-color: #1d1b1c;
+height: auto;
+padding-top: 20px;
+padding-bottom: 20px;
+}
+.team-bg {
+	background-color: none;
+	overflow: hidden;
+}
+.team .section-title {
+	padding-bottom: 40px;
+}
+.team .section-title .main-team-subheading {
+	font-size: 14px;
+	font-weight: 500;
+	padding: 0;
+	line-height: 1px;
+	margin: 0 0 5px 0;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	color: #aaaaaa;
+}
+.team .main-team-heading {
+	margin: 0;
+	font-size: 36px;
+	font-weight: 700;
+	text-transform: uppercase;
+	color: #556270;
+}
+.team .member {
+	position: relative;
+	box-shadow: 0px 2px 15px rgba(85, 98, 112, 0.08);
+	padding: 30px;
+	border-radius: 4px;
+	background: #fff;
+}
+.team .member .pic {
+	overflow: hidden;
+	width: 140px;
+	border-radius: 4px;
+}
+.team .member .pic img {
+	transition: ease-in-out 0.3s;
+}
+.team .member:hover img {
+transform: scale(1.1);
+}
+.team .member .member-info {
+	padding-left: 30px;
+}
+.team .member .member-heading {
+	font-weight: 700;
+	margin-bottom: 5px;
+	font-size: 20px;
+	color: #556270;
+	line-height: 1.2;
+}
+.team .member span {
+	display: block;
+	font-size: 15px;
+	padding-bottom: 10px;
+	position: relative;
+	font-weight: 500;
+}
+.team .member span::after {
+	content: '';
+	position: absolute;
+	display: block;
+	width: 50px;
+	height: 1px;
+	background: #dee2e6;
+	bottom: 0;
+	left: 0;
+}
+.team .member .member-para {
+	margin: 10px 0 0 0;
+	font-size: 14px;
+}
+.team .member .social {
+	margin-top: 12px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+.team .member .social a {
+	transition: ease-in-out 0.3s;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 4px;
+	width: 32px;
+	height: 32px;
+	background: #8795a4;
+}
+.team .member .social a + a {
+margin-left: 8px;
+}
+.team .member .social a:hover {
+	background: #41A1FD;
+}
+.team .member .social a .team-icon {
+	color: #fff;
+	font-size: 16px;
+	margin: 0 2px;
+}
+</style>
+
+<!-- Start WOWSlider.com HEAD section -->
+<link rel="stylesheet" type="text/css" href="engine1/style.css" />
+<script type="text/javascript" src="engine1/jquery.js"></script>
+<!-- End WOWSlider.com HEAD section -->
+
+</head>
+<body>
+<!-- navbar start -->
+<nav style="text-transform: uppercase;color: #272222; font-weight: bold;" class="navbar navbar-expand-sm navbar-light bg-dark fixed-top">
+  <a  href="home.html"><img style="border-radius: 80px; height: 85px;" class="topheading" src="images/logo.jpg"></a>
+  <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="collapsibleNavId">
+<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+<li class="nav-item active">
+<a style="color: white; font-weight: bold;" class="nav-link" href="home.html">Home<span class="sr-only">(current)</span></a>
+</li>
+<li class="nav-item dropdown">
+<a style="color: white; font-weight: bold;" class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Puppies</a>
+<div class="dropdown-menu" aria-labelledby="dropdownId">
+
+<a  style="text-transform:uppercase ;"class="dropdown-item text-white bg-dark" href="beagle.html">Beagle</a>
+<a style="text-transform:uppercase ;" class="dropdown-item text-white bg-dark" href="browngermanshepherd.html">Brown German Shepherd</a>
+<a  style="text-transform:uppercase ;"class="dropdown-item text-white bg-dark" href="bullydog.html">Bully Dog</a>
+<a  style="text-transform:uppercase ;"class="dropdown-item text-white bg-dark" href="Charliedog.html">Charlie Dog</a>
+<a  style="text-transform:uppercase ;"class="dropdown-item text-white bg-dark" href="Laboradorretriever.html">Laborader retriever</a>
+<a  style="text-transform:uppercase ;"class="dropdown-item text-white bg-dark" href="oscardog.html">Oscar Dog</a>
+<a  style="text-transform:uppercase ;"class="dropdown-item text-white bg-dark" href="pandashepherd.html">Panda Shepherd</a>
+<a  style="text-transform:uppercase ;"class="dropdown-item text-white bg-dark" href="oscardog.html">Puppy Lapidor</a>
+
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="#"></a>
+</li>
+<li class="nav-item dropdown">
+<a style="color: white; font-weight: bold;" class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Nutrition</a>
+<div class="dropdown-menu" aria-labelledby="dropdownId">
+<a class="dropdown-item text-white bg-dark" href="nutrition1.html">Pedigree</a>
+<a class="dropdown-item text-white bg-dark" href="nutrition2.html">Eukanuba</a>
+<a class="dropdown-item text-white bg-dark" href="nutrition3.html">Royal Canin</a>
+<a class="dropdown-item text-white bg-dark" href="nutrition4.html">Gorilla Max</a>
+<a class="dropdown-item text-white bg-dark" href="nutrition5.html">IAMS Minichunks</a>
+<a class="dropdown-item text-white bg-dark" href="nutrition6.html">Mini Chunk</a>
+<a class="dropdown-item text-white bg-dark" href="nutrition7.html">Super Coat</a>
+<a class="dropdown-item text-white bg-dark" href="nutrition8.html">Cesar</a>
+
+
+</div>
+</li>
+<li class="nav-item active">
+<a style="color: white; font-weight: bold;" class="nav-link" href="FAQ'S.html">FAQ'S<span class="sr-only">(current)</span></a>
+</li>
+<li class="nav-item active">
+<a style="color: white; font-weight: bold;" class="nav-link" href="gallery.html">Gallery<span class="sr-only">(current)</span></a>
+</li>
+<li class="nav-item active">
+<a style="color: white; font-weight: bold;" class="nav-link" href="contactus.html">Contact<span class="sr-only">(current)</span></a>
+</li>
+<li class="nav-item active">
+<a style="color: white; font-weight: bold;" class="nav-link" href="about us.html">team<span class="sr-only">(current)</span></a>
+</li>    
+<li class="nav-item active">
+  <a style="color: white; font-weight: bold;" class="nav-link" href="sitemap.html">Sitemap<span class="sr-only">(current)</span></a>
+  </li> <li class="nav-item active">
+      <a style="color: white; font-weight: bold;" class="nav-link" href="grooming.html">Grooming<span class="sr-only">(current)</span></a>
+      </li>    
+</ul>
+</div>
+</nav>
+<!-- navbar end -->
+<br><br>
+<!-- Start WOWSlider.com BODY section -->
+<div id="wowslider-container1">
+<div class="ws_images"><ul>
+<li><img style="height: 550px; width: 100%;" src="data1/images/slider1.jpg" alt="slider1" title="slider1" id="wows1_0"/></li>
+<li><img style="height: 550px; width: 100%;"src="data1/images/slider2.jpg" alt="slider2" title="slider2" id="wows1_1"/></li>
+<li><img style="height: 550px; width: 100%;"src="data1/images/slider4.jpg" alt="slider4" title="slider4" id="wows1_2"/></li>
+<li><a href="http://wowslider.net"><img style="height: 550px; width: 100%;" src="data1/images/slider5.jpg" alt="bootstrap image slider" title="slider5" id="wows1_3"/></a></li>
+<li><img style="height: 550px; width: 100%;" src="data1/images/sllider3.jpg" alt="sllider3" title="sllider3" id="wows1_4"/></li>
+</ul></div>
+<div class="ws_bullets"><div>
+<a href="#" title="slider1"><span><img src="data1/tooltips/slider1.jpg" alt="slider1"/>1</span></a>
+<a href="#" title="slider2"><span><img src="data1/tooltips/slider2.jpg" alt="slider2"/>2</span></a>
+<a href="#" title="slider4"><span><img src="data1/tooltips/slider4.jpg" alt="slider4"/>3</span></a>
+<a href="#" title="slider5"><span><img src="data1/tooltips/slider5.jpg" alt="slider5"/>4</span></a>
+<a href="#" title="sllider3"><span><img src="data1/tooltips/sllider3.jpg" alt="sllider3"/>5</span></a>
+</div></div><div class="ws_script" style="position:absolute;left:-99%"><a href="http://wowslider.net">bootstrap carousel</a> by WOWSlider.com v9.0</div>
+<div class="ws_shadow"></div>
+</div>	
+<script type="text/javascript" src="engine1/wowslider.js"></script>
+<script type="text/javascript" src="engine1/script.js"></script>
+<!-- End WOWSlider.com BODY section -->
+<br>
+<section id="team" class="team team-bg py-5">
+  <div class="container">
+
+  <div class="section-title">
+    <p style="text-align: center; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;" class="main-team-heading">MEET OUR TEAM</p>
+  </div>
+
+  <div class="row">
+
+    <div class="col-lg-6">
+    <div class="member d-flex align-items-start">
+      <div class="pic"><img style="height: 200px; width: 1000px;"  src="images/musfirah.jpg" class="img-fluid" alt="not found"></div>
+      <div class="member-info">
+      <p style=" font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;" class="member-heading">Musfirah</p>
+      <span>Website Designer</span>
+      <p class="member-para">Musfirah is a website designer, doing diploma<br> in aptech . He is also a Pet Lover? and as such writes for many other <br>Pet Websites on the net,<br> including our own</p>
+      </div>
+    </div>
+    </div>
+
+    <div class="col-lg-6 mt-4 mt-lg-0">
+    <div class="member d-flex align-items-start">
+      <div class="pic"><img style="height: 200px; width: 1000px;" src="images/SAFA.jpg" class="img-fluid" alt="not found"></div>
+      <div class="member-info">
+      <p style=" font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"  class="member-heading">Safa</p>
+      <span>Website Designer</span>
+      <p class="member-para">Safa is a website designer, doing diploma<br> in aptech . He is also a Pet Lover? and as such writes for many other <br>Pet Websites on the net,<br> including our own</p>
+      </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+  </div>
+
+  </div>
+</section>
+<!-- section footer start -->
+<div class="offset-md-4">
+<img class="img-responsive" src="images/aboutdog.png"style=" margin-bottom: -53px; " data-aos="fade-up">
+</div>
+<div class="section_footer">
+  <div class="container">
+    <div class="mail_section">
+      
+        <div class="footer-logo"><img <a  href="home.html"><img style="border-radius: 80px; height: 130px;" class="topheading" src="images/logo.jpg">
+        <img style="padding: 40px;" src="images/map-icon.png"><span style="color: white;" class="map_text">Gb road 123 london Uk</span>
+        <img style="padding: 40px;"  src="images/call-icon.png"><span style="color: white;" class="map_text">(+71) 9876543210</span>
+      
+      </div> 
+      <div class="footer_section_2">
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-3">
+              <h2 class="shop_text">About Puppies</h2>
+              <p class="dummy_text">A puppy is a juvenile dog. Some puppies can weigh 1–1.5 kg (2.2–3.3 lb), while larger ones can weigh up to 7–11 kg (15–24 lb).</p>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-3">
+              <h2 class="shop_text">Useful Links</h2>
+              <a href="home.html"><div class="image-icon"><img src="images/bulit-icon.png"><span class="pet_text">Home</span></div></a>
+              <a href="gallery.html"><div class="image-icon"><img src="images/bulit-icon.png"><span class="pet_text">Gallery</span></div></a>
+              <a href="contactus.html"><div class="image-icon"><img src="images/bulit-icon.png"><span class="pet_text">Contact us</span></div></a>
+              <a href="about us.html"><div class="image-icon"><img src="images/bulit-icon.png"><span class="pet_text">About us</span></div></a>
+              </div>
+              <div class="col-sm-6 col-md-6 col-lg-3">
+              <h2 class="shop_text">Overview</h2>
+              <a href="FAQ'S.html"><div class="image-icon"><img src="images/bulit-icon.png"><span class="pet_text">Faq's</span></div></a>
+              <a href="nutrition1.html"><div class="image-icon"><img src="images/bulit-icon.png"><span class="pet_text">Nutrition</span></div></a>
+              <a href="beagle.html"><div class="image-icon"><img src="images/bulit-icon.png"><span class="pet_text">Puppies</span></div></a>
+       				     </div>
+      <div class="col-sm-6 col-md-6 col-lg-3">
+        <h2 class="adderess_text">Instagram</h2>
+        <div class="footer-img">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="footer-img"><img src="images/footer-img1.png" style="width: 100%;"></div>
+              <div class="footer-img"><img src="images/footer-img2.png" style="width: 100%;"></div>
+            </div>
+            <div class="col-sm-6">
+              <div class="footer-img"><img src="images/footer-img3.png" style="width: 100%;"></div>
+              <div class="footer-img"><img src="images/footer-img4.png" style="width: 100%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+          </div>
+          <div class="social-icon">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="icons">
+                  
+                  <a href="https://www.facebook.com/"><img style=" height: 30px;border-radius: 50px;" src="images/fb-icon.png "></a>
+                  <a href="https://www.instagram.com/puppies.website/"><img style="background-color: white; height: 30px;border-radius: 50px;" src="images/icons8-instagram-24 (1).png"></a>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- section footer end -->
+</body>
+</html>
+
